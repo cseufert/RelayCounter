@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/247/!svn/ver/16/class/framework
+END
+api.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/247/!svn/ver/14/class/framework/api.php
+END
+view.php
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/247/!svn/ver/14/class/framework/view.php
+END
+user.php
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/247/!svn/ver/14/class/framework/user.php
+END
+model.php
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/247/!svn/ver/16/class/framework/model.php
+END
+protect.php
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/247/!svn/ver/14/class/framework/protect.php
+END
+dboverload.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/247/!svn/ver/14/class/framework/dboverload.php
+END
+controller.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/247/!svn/ver/14/class/framework/controller.php
+END
+genericoverload.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/247/!svn/ver/14/class/framework/genericoverload.php
+END

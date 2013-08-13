@@ -1,0 +1,147 @@
+<?php
+
+class apiTeam extends frameworkApi {
+  function doGet($p) {
+    return $this->doAction($p, 'Get');
+  }
+  
+  function doGet_LeaderBoard($p) {
+    $tpl = stdTpl::open('viewTeam', 'row');
+    $teams = modelTeam::all("distance DESC");
+    $pos = 0;
+    if($p['pos'] == 'One') {
+      $pos = 1;
+      for($i = 16; $i <= 100; $i++) {
+        unset($teams[$i]);
+      }
+    } else if($p['pos'] == 'Two') {
+      $pos = 17;
+      for($i = 0; $i < 16; $i++) {
+        unset($teams[$i]);
+      }
+      for($i = 42; $i < 100; $i++) {
+        unset($teams[$i]);
+      }
+    } else if($p['pos'] == 'Three') {
+      $pos = 43;
+      for($i = 0; $i < 42; $i++) {
+        unset($teams[$i]);
+      }
+      for($i = 68; $i < 100; $i++) {
+        unset($teams[$i]);
+      }
+    }  else if($p['pos'] == 'Four') {
+      $pos = 69;
+      for($i = 0; $i < 68; $i++) {
+        unset($teams[$i]);
+      }
+      for($i = 94; $i < 100; $i++) {
+        unset($teams[$i]);
+      }
+    } else if($p['pos'] == 'Five') {
+      $pos = 95;
+      for($i = 0; $i < 94; $i++) {
+        unset($teams[$i]);
+      }
+    }
+    if($tRow = $tpl->getSubTpl("ROW")) {
+      foreach($teams as $team) {
+        $tRow->setAttr(array("NAME"=>$team->name,
+                            "DISTANCE"=>$team->distance / 1000,
+                            "AVERAGELAP"=>viewHome::secsToNice($team->avglap),
+                            "BESTLAP"=>viewHome::secsToNice($team->bestlap),
+                            "LASTLAP"=>viewHome::secsToNice($team->lastlap),
+                            "TOTALLAPS"=>$team->totallaps,
+                            "POS"=>$pos,
+                            "ID"=>$team->id));
+        $pos++;
+        $tRow->next();
+      }
+    }
+    return array('html'=>$tpl->toString());
+  }
+  
+  function doGet_Podium($p) {
+    $tpl = stdTpl::open("viewTeam", 'podium');
+    $start = stdConf::getValue("std.race.start", true);
+    $end = $start + (24 * 60 * 60);
+    $now = microtime(true);
+    $convert = new stdDateConvert($end, $now);
+    $teams = modelTeam::all("distance DESC");
+    $totalkms = 0;
+    foreach($teams as $team) {
+      $totalkms += $team->distance;
+    }
+    $tpl->setAttr(array("CLOCK"=>$convert->toCountdownClock(),
+                        "DISTANCE"=>$totalkms / 1000,
+                        "FIRST"=>$teams[0]->name,
+                        "SECOND"=>$teams[2]->name,
+                        "THIRD"=>$teams[3]->name));
+    try {
+      $s1_val = stdConf::getValue("std.stats.fastest-1st");
+      $s1_team = modelTeam::single(stdConf::getValue("std.stats.fastest-1st-team"))->name;
+    } catch(Exception $e) {
+      $s1_val = "";
+      $s1_team = "Not Calculated";
+    }
+    try {
+      $s2_val = stdConf::getValue("std.stats.form-1st");
+      $s2_team = modelTeam::single(stdConf::getValue("std.stats.form-1st-team"))->name;
+    } catch(Exception $e) {
+      $s2_val = "";
+      $s2_team = "Not Calculated";
+    }
+    try {
+      $s3_val = stdConf::getValue("std.stats.consistent-1st");
+      $s3_team = modelTeam::single(stdConf::getValue("std.stats.consistent-1st-team"))->name;
+    } catch(Exception $e) {
+      $s3_val = "";
+      $s3_team = "Not Calculated";
+    }
+    try {
+      $s4_val = stdConf::getValue("std.stats.teamplay-1st");
+      $s4_team = modelTeam::single(stdConf::getValue("std.stats.teamplay-1st-team"))->name;
+    } catch(Exception $e) {
+      $s3_val = "";
+      $s3_team = "Not Calculated";
+    }
+    $tpl->setAttr(array("S1NAME"=>$s1_team, "S1TIME"=>$s1_val,
+                        "S2NAME"=>$s2_team, "S2TIME"=>$s2_val,
+                        "S3NAME"=>$s3_team, "S3TIME"=>viewHome::secsToNice($s3_val),
+                        "S4NAME"=>$s4_team, "S4TIME"=>round($s4_val)));
+    return array("html"=>$tpl->toString());
+  }
+  
+  function doGet_MobileLeaderBoard($p) {
+    $tpl = stdTpl::open('viewTeam', 'mobilerow');
+    $teams = modelTeam::all("distance DESC");
+    $pos = 1;
+    
+    if($tRow = $tpl->getSubTpl("ROW")) {
+      foreach($teams as $team) {
+        $tRow->setAttr(array("NAME"=>$team->name,
+                            "DISTANCE"=>$team->distance / 1000,
+                            "AVERAGELAP"=>viewHome::secsToNice($team->avglap),
+                            "BESTLAP"=>viewHome::secsToNice($team->bestlap),
+                            "LASTLAP"=>viewHome::secsToNice($team->lastlap),
+                            "TOTALLAPS"=>$team->totallaps,
+                            "POS"=>$pos,
+                            "ID"=>$team->id));
+        $pos++;
+        $tRow->next();
+      }
+    }
+    return array('html'=>$tpl->toString());
+  }
+  
+  function doGet_MobileStats($p) {
+    $tpl = stdTpl::open("viewTeam", 'mobilestats');
+    $teams = modelTeam::all("distance DESC");
+    $tpl->setAttr(array("FIRST"=>$teams[0]->name,
+                        "SECOND"=>$teams[2]->name,
+                        "THIRD"=>$teams[3]->name));
+    return array("html"=>$tpl->toString());
+  }
+}
+
+?>

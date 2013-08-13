@@ -1,0 +1,6 @@
+<?php
+require_once("class/autoload.php");
+
+$processor = new t47Processor();
+$processor->play();
+?>

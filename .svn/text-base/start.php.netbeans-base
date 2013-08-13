@@ -1,0 +1,7 @@
+<?php
+echo "Current Unix time is: " . microtime(true);
+echo "<br />";
+echo "Race starts at: " . strtotime('14-09-2012 10:00');
+echo "<br />";
+echo "Race finishes at: " . strtotime('15-09-2012 10:00')
+?>
