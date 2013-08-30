@@ -23,7 +23,7 @@ class viewHome extends frameworkView {
                             "FIRST"=>$teams[0]->name,
                             "SECOND"=>$teams[1]->name,
                             "THIRD"=>$teams[2]->name,
-                            "CLOCK"=>$end));
+                            "CLOCK"=>$convert->toCountdownClock()));
     $pos = 1;
     if($tAll = $this->t->getSubTpl("ALL")) {
       foreach($teams as $i=>$team) {
@@ -155,8 +155,8 @@ class viewHome extends frameworkView {
       $s4_val = stdConf::getValue("std.stats.teamplay-1st");
       $s4_team = modelTeam::single(stdConf::getValue("std.stats.teamplay-1st-team"))->name;
     } catch(Exception $e) {
-      $s4_val = "";
-      $s4_team = "Not Calculated";
+      $s3_val = "";
+      $s3_team = "Not Calculated";
     }
     $this->t->setAttr(array("S1NAME"=>$s1_team, "S1TIME"=>$s1_val,
                         "S2NAME"=>$s2_team, "S2TIME"=>$s2_val,

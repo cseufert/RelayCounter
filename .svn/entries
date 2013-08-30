@@ -11,8 +11,8 @@ https://svn.public.mckinnonsc.vic.edu.au/svn/247
 29
 michael
 has-props
-
-
+has-prop-mods
+svn:special svn:externals svn:needs-lock
 
 
 
@@ -26,18 +26,17 @@ has-props
 
 91fe0bdf-90fd-480d-9bdd-89d99a1c9351
 
-start.php
+.htaccess
 file
 
 
 
 
 2012-09-12T00:01:59.000000Z
-dab69f53a0558ebfbdceac98372c1299
-2012-09-11T23:54:47.315036Z
-16
+1779b3d43c0463fe159ee1899f543cca
+2012-08-31T03:55:55.523495Z
+10
 michael
-has-props
 
 
 
@@ -58,118 +57,11 @@ has-props
 
 
 
-203
+
+250
 
-conf
+api
 dir
-
-nbproject
-dir
-
-css
-dir
-
-apple-touch-icon.png
-file
-
-
-
-
-2012-09-12T00:23:43.000000Z
-2ef1c40aa990e6660186263b79d05e46
-2012-09-12T00:19:18.490354Z
-18
-michael
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-14742
-
-config.php
-file
-
-
-
-
-2012-09-14T03:20:38.000000Z
-5ebe4d1256602080527438f9e1a8b974
-2012-09-14T03:09:36.170970Z
-26
-michael
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-159
-
-index.php
-file
-
-
-
-
-2012-09-12T00:01:59.000000Z
-2f9e0ad5a6d2a83b66180eb90925b935
-2012-08-31T03:53:27.559566Z
-1
-michael
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-473
 
 api.php
 file
@@ -205,8 +97,159 @@ michael
 
 1278
 
-sql
+apple-touch-icon.png
+file
+
+
+
+
+2012-09-12T00:23:43.000000Z
+2ef1c40aa990e6660186263b79d05e46
+2012-09-12T00:19:18.490354Z
+18
+michael
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+14742
+
+class
 dir
+
+conf
+dir
+
+config.php
+file
+
+
+
+
+2012-09-14T03:20:38.000000Z
+5ebe4d1256602080527438f9e1a8b974
+2012-09-14T03:09:36.170970Z
+26
+michael
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+159
+
+css
+dir
+
+img
+dir
+
+index.php
+file
+
+
+
+
+2012-09-12T00:01:59.000000Z
+2f9e0ad5a6d2a83b66180eb90925b935
+2012-08-31T03:53:27.559566Z
+1
+michael
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+473
+
+js
+dir
+
+nbproject
+dir
+
+processor.php
+file
+
+
+
+
+2012-09-12T00:01:59.000000Z
+3016344f643f4a78c94e431b7d4c32c9
+2012-08-31T05:20:44.062194Z
+11
+michael
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+99
 
 rest.php
 file
@@ -245,16 +288,19 @@ has-props
 skin
 dir
 
-processor.php
+sql
+dir
+
+start.php
 file
 
 
 
 
 2012-09-12T00:01:59.000000Z
-3016344f643f4a78c94e431b7d4c32c9
-2012-08-31T05:20:44.062194Z
-11
+dab69f53a0558ebfbdceac98372c1299
+2012-09-11T23:54:47.315036Z
+16
 michael
 has-props
 
@@ -277,51 +323,5 @@ has-props
 
 
 
-99
-
-class
-dir
-
-api
-dir
-
-.htaccess
-file
-
-
-
-
-2012-09-12T00:01:59.000000Z
-1779b3d43c0463fe159ee1899f543cca
-2012-08-31T03:55:55.523495Z
-10
-michael
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-250
-
-img
-dir
-
-js
-dir
+203
 

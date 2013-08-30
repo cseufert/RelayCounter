@@ -2,7 +2,7 @@
   __SUB_ROW_
   <tr align="center" class="rowbg" id="__ID__">
     <td width="40" class="index">__POS__</td>
-    <td align="left" class="teamname">__NAME__</td>
+    <td align="left" class="teamname">__NAME__  (__ID__)</td>
     <td width="12%" class="measurement">__DISTANCE__ kms</td>
     <td width="12%" class="measurement">__AVERAGELAP__ s</td>
     <td width="12%" class="measurement">__BESTLAP__ s</td>

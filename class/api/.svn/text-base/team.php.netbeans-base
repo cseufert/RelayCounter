@@ -66,17 +66,17 @@ class apiTeam extends frameworkApi {
     $start = stdConf::getValue("std.race.start", true);
     $end = $start + (24 * 60 * 60);
     $now = microtime(true);
-    //$convert = new stdDateConvert($end, $now);
+    $convert = new stdDateConvert($end, $now);
     $teams = modelTeam::all("distance DESC");
     $totalkms = 0;
     foreach($teams as $team) {
       $totalkms += $team->distance;
     }
-    $tpl->setAttr(array("CLOCK"=>$end,
+    $tpl->setAttr(array("CLOCK"=>$convert->toCountdownClock(),
                         "DISTANCE"=>$totalkms / 1000,
                         "FIRST"=>$teams[0]->name,
-                        "SECOND"=>$teams[1]->name,
-                        "THIRD"=>$teams[2]->name));
+                        "SECOND"=>$teams[2]->name,
+                        "THIRD"=>$teams[3]->name));
     try {
       $s1_val = stdConf::getValue("std.stats.fastest-1st");
       $s1_team = modelTeam::single(stdConf::getValue("std.stats.fastest-1st-team"))->name;
@@ -102,8 +102,8 @@ class apiTeam extends frameworkApi {
       $s4_val = stdConf::getValue("std.stats.teamplay-1st");
       $s4_team = modelTeam::single(stdConf::getValue("std.stats.teamplay-1st-team"))->name;
     } catch(Exception $e) {
-      $s4_val = "";
-      $s4_team = "Not Calculated";
+      $s3_val = "";
+      $s3_team = "Not Calculated";
     }
     $tpl->setAttr(array("S1NAME"=>$s1_team, "S1TIME"=>$s1_val,
                         "S2NAME"=>$s2_team, "S2TIME"=>$s2_val,

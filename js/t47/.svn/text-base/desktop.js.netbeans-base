@@ -10,14 +10,7 @@ $(document).ready(function() {
     $curr = $next;
     $next = $curr.next();
   }, 7000);
-  //$("#clock").stdCountdown();
-  var cd = countdown(new Date($("#clock").text() * 1000), function(ts) {
-      var clock = $("#clock");
-      var hours = $.trim(ts.hours).length < 2 ? "0" + ts.hours : ts.hours;
-      var minutes = $.trim(ts.minutes).length < 2 ? "0" + ts.minutes : ts.minutes;
-      var seconds = $.trim(ts.seconds).length < 2 ? "0" + ts.seconds : ts.seconds;
-      clock.text(hours + ":" + minutes + ":" + seconds);
-  }, countdown.HOURS|countdown.MINUTES|countdown.SECONDS);
+  $("#clock").stdCountdown();
   setInterval(function() {
     $("#sect-top").apiCall2({
       method: 'Get',
@@ -56,15 +49,8 @@ $(document).ready(function() {
       type:   'Team',
       params: {action: 'Podium'},
       apply: true
-    }, function(r) {
-        clearInterval(cd);
-        cd = countdown(new Date($("#clock").text() * 1000), function(ts) {
-        var clock = $("#clock");
-        var hours = $.trim(ts.hours).length < 2 ? "0" + ts.hours : ts.hours;
-        var minutes = $.trim(ts.minutes).length < 2 ? "0" + ts.minutes : ts.minutes;
-        var seconds = $.trim(ts.seconds).length < 2 ? "0" + ts.seconds : ts.seconds;
-        clock.text(hours + ":" + minutes + ":" + seconds);
-    }, countdown.HOURS|countdown.MINUTES|countdown.SECONDS);
+    }, function() {
+      $("#clock").stdCountdown();
     });
   }, 15000);
 });
