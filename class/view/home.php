@@ -35,6 +35,22 @@ class viewHome extends frameworkView {
                              "TOTALLAPS"=>$team->totallaps,
                              "POS"=>$pos,
                              "ID"=>$team->id));
+        if($tRunner = $tAll->getSubTpl("RUNNER")) {
+            $runners = modelRunner::where(array("teamid"=>$team->id));
+            $rPos = 1;
+            foreach($runners as $runner) {
+                $$tRunner->setAttr(array("NAME"=>$runner->name,
+                                         "DISTANCE"=>$runner->distance / 1000,
+                                         "AVERAGELAP"=>$this->secsToNice($runner->avglap),
+                                         "BESTLAP"=>$this->secsToNice($runner->bestlap),
+                                         "LASTLAP"=>$this->secsToNice($runner->lasplap),
+                                         "TOTALLAPS"=>$runner->totallaps,
+                                         "POS"=>$rPos,
+                                         "ID"=>$runner->id));
+                $tRunner->next();
+                $rPos++;
+            }
+        }
         $tAll->next();
         $pos++;
       }

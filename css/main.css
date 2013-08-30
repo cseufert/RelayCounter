@@ -50,3 +50,109 @@ body {background:url(../../img/shattered.png); font-family:Helvetica, Arial, san
   }
   .position {font-size:20px;margin-top:-24px;color:#202020;}
   .posbox {text-align: center;}
+
+  
+#leaderboard {font-size:14px;}  
+#leaderboard .result.row:nth-child(odd) {
+   background-color:#ddd;
+}
+
+.result.row { background-color:#eee; padding:5px 0 5px 0;}
+.col {float:left;  }
+.result .col { min-height:20px; overflow:hidden; white-space: nowrap;}
+.pos {width:50px; text-align: center; font-weight:bold;}
+.teamname {width:200px;}
+.dist, .avglap, .bestlap, .lastlap, .lapcount {
+  width:80px; text-align:right;}
+.kilometer:after {content:" km"}
+.lastcol {clear:left;}
+
+/* 3 column view */
+@media only screen and (min-width: 1901px) {
+  #leaderboard {font-size:13px;}
+  #leaderboard .lapcount { padding-right: 5px; }
+  #leaderboard .result.row {padding:0;}
+  #leaderboard .result.row .col {padding-top: 5px; padding-bottom:5px;; background:#eee;}
+  #leaderboard .result.row:nth-child(6n+1) .col,
+  #leaderboard .result.row:nth-child(6n+3) .col,
+  #leaderboard .result.row:nth-child(6n+5) .col { background:#ddd; }
+  #leaderboard .result.row:nth-child(3n+2) .lastcol,
+  #leaderboard .result.row:nth-child(3n+3) .lastcol {
+   clear:none; display:none; }
+  .dist, .avglap, .bestlap, .lastlap, .lapcount {
+    width:65px; }
+  .teamname {width:265px;}
+  .pos {width:30px;}
+}
+  
+/* 2 column view */
+@media only screen and (min-width: 1280px) and (max-width: 1900px) {
+  #leaderboard {font-size:14px;}
+  #leaderboard .lapcount { padding-right: 5px; }
+  #leaderboard .result.row {padding:0;}
+  #leaderboard .result.row .col {padding-top: 5px; padding-bottom:5px;; background:#eee;}
+  #leaderboard .result.row:nth-child(4n+1) .col { background:#ddd; }
+  #leaderboard .result.row:nth-child(4n+2) .col { background:#ddd; }
+  #leaderboard .result.row:nth-child(even) .lastcol {
+   clear:none; display:none; }
+}
+
+@media only screen and (min-width: 1600px) and (max-width: 1900px) {
+  #leaderboard, #stats {width:1580px;}
+  #leaderboard {font-size:16px;}
+  .dist, .avglap, .bestlap, .lastlap, .lapcount {
+    width:85px; }
+  .teamname {width:310px;}
+  .pos {width:40px;}
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1599px) {
+  #leaderboard, #stats {width:1260px;}
+  .teamname {width:180px;}
+  .pos {width:40px;}
+}
+
+
+@media only screen and (min-width: 1024px) and (max-width: 1279px) {
+  #leaderboard, #stats {width:1000px;}
+  #leaderboard {font-size:16px;}
+  .dist, .avglap, .bestlap, .lastlap, .lapcount {
+    width:130px; }
+  .teamname {width:290px;}
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  #leaderboard, #stats {width:720px;}
+  .teamname {width:240px;}
+}
+
+/* Mobile Phone */
+@media only screen and (max-width: 767px) {
+  .result.row { padding:10px 5px 10px 5px;}
+  #leaderboard {font-size:11px;}
+  .pos {width:25px;}
+  .dist {width:25px;}
+  .kilometer:after {content:"k"}
+  .dist, .avglap, .bestlap, .lastlap, .lapcount {
+  width:35px; }
+  .teamname {width:180px;}
+}
+/* Landscape Phone (iPhone 5) */
+@media only screen and (min-width: 568px) and (max-width: 767px) {
+  #leaderboard, #stats {width:540px;}
+  .teamname {width:220px;}
+  .dist, .avglap, .bestlap, .lastlap, .lapcount {
+  width:50px; }
+}
+
+/* Landscape Phone (iPhone 4) */
+@media only screen and (min-width: 480px) and (max-width: 567px) {
+  #leaderboard, #stats {width:460px;}
+  .dist, .avglap, .bestlap, .lastlap, .lapcount {
+  width:45px; }
+}
+
+/* Portait Phone */
+@media only screen and (max-width: 479px) {
+  #leaderboard, #stats {width:300px;}
+  .avglap, .bestlap, .lastlap {display:none;}
+}

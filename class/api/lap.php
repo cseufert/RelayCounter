@@ -26,17 +26,21 @@ class apiLap extends frameworkApi {
       modelCheckpoint::insert(array("runnerid"=>$runner->id, "time"=>$time, "checkpointid"=>$checkpoint->id));
       if(!$runner->onLeadLap())
           return; // Not competitor read
-      if($checkpoint->isEntry()) {
+      if($checkpoint->type == modelCheckpoint::T_ENTRY) {
           try {
               $lap = modelLap::where(array("runnerid"=>$runner->id, "time"=>$time, "checkpointid"=>$checkpoint->id));
               if($runner->isLeader()) {
-                  $lap = modelLap::insert(array("runnerid"=>$runner->id, "time"=>$time, "checkpoint"=>$checkpoint->id, ))
+                  
               }
           } catch (frameworkModel_Exception_ZeroResults $ex) {
               if($runner->isLeader()) {
-                  
+                  $lastlap = modelLap::where(array("teamid"=>$runner->team->id), "timecode DESC");
+                  $lap = modelLap::insert(array("runnerid"=>$runner->id, "timecode"=>$time, "checkpointid"=>$checkpoint->id, "teamid"=>$runner->team->id, "time"=>$time - $lastlap[0]->timecode, "status"=>  modelLap::S_CONFIRMED));
+              } else {
+                  $lastlap = modelLap::where(array("teamid"=>$runner->team->id), "timecode DESC");
+                  $lap = modelLap::insert(array("runnerid"=>$runner->id, "timecode"=>$time, "checkpointid"=>$checkpoint->id, "teamid"=>$runner->team->id, "time"=>$time - $lastlap[0]->timecode, "status"=>  modelLap::S_UNCONFIRMED));
               }
-          }
+         }
       }
   }
 }

@@ -14,6 +14,12 @@ class modelRunner extends frameworkModel {
     $o->percentage = $row['percentage'];
     $o->lastcheckpoint = modelCheckpoint::single($row['lastcheckpointid']);
     $o->lastcheckpointtime = stdDate($row['lastcheckpointtime']);
+    $o->distance = $row['distance'];
+    $o->avglap = $row['avglap'];
+    $o->bestlap = $row['bestlap'];
+    $o->lastlap = $row['lastlap'];
+    $o->totallaps = $row['totallaps'];
+    
   }
   
   function onLeadLap() {
